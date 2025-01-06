@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-
-import '../../../controllers/auth_controllers.dart';
+import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
 import '../../../controllers/utils/app_textstyles.dart';
 
@@ -104,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextButton(
                           onPressed: () {
-                           // Get.to(() => ForgotPasswordScreen());
+                            // Get.to(() => ForgotPasswordScreen());
                           },
                           child: Text('Forget Password?', style: AppTextstyles.SimpleBlackText())),
                     ],

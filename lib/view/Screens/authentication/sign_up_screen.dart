@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-
-import '../../../controllers/auth_controllers.dart';
+import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
 import '../../../controllers/utils/app_textstyles.dart';
 
@@ -206,7 +205,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Text(' Already have an account?', style: AppTextstyles.simpleGreyText()),
                     TextButton(
                         onPressed: () {
-                         // Get.to(() => LoginScreen());
+                          // Get.to(() => LoginScreen());
                         },
                         child: Text('Log in', style: AppTextstyles.simpleRedText()))
                   ],

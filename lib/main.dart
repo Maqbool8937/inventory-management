@@ -3,10 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:inventory_management_app/view/Screens/authentication/back_to_login.dart';
 import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
+import 'package:inventory_management_app/view/Screens/transfer_screen.dart';
 
-import 'view/Screens/authentication/forgot_password.dart';
-import 'view/Screens/authentication/login_screen.dart';
-import 'view/Screens/authentication/otp_verification_screen.dart';
+import 'view/Screens/accout_detail/adding_resources_screen.dart';
 import 'view/Screens/authentication/sign_up_screen.dart';
 
 void main() {
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(mediaQuerySize.width, mediaQuerySize.height),
       minTextAdapt: true,
       splitScreenMode: true,
-      child:  GetMaterialApp(debugShowCheckedModeBanner: false, home: SignupScreen()),
+      child:  GetMaterialApp(debugShowCheckedModeBanner: false, home: AddingResourcesScreen()),
     );
   }
 }
