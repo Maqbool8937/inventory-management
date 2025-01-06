@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:inventory_management_app/controllers/utills/app_colors.dart';
+import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 
 class CommonAppBar extends StatelessWidget {
   const CommonAppBar({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:inventory_management_app/view/widgets/common_appbar.dart';
+import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 
 class TransferScreen extends StatelessWidget {
   const TransferScreen({super.key});
