@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../controllers/utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   final String name;
   Color color;
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
       {super.key,
       required this.name,
       this.isLoading = false,
-      this.color = AppColors.buttonColor,
+      this.color = AppColors.primaryColor,
       this.textStyle = const TextStyle(
         color: Colors.white,
         fontSize: 16,
@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       height: mediaQuerySize.height * 0.07,
       width: width,
-      decoration: BoxDecoration(border: Border.all(color: AppColors.buttonColor), color: color, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(border: Border.all(color: AppColors.primaryColor), color: color, borderRadius: BorderRadius.circular(10)),
       child: isLoading
           ? SpinKitThreeInOut(
               color: AppColors.whiteColor,
