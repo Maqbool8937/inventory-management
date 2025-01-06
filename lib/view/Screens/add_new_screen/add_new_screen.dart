@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_management_app/controllers/utills/app_colors.dart';
 import 'package:inventory_management_app/controllers/utills/common_dropdown.dart';
 import 'package:inventory_management_app/controllers/utills/common_textfield.dart';
 import 'package:inventory_management_app/controllers/utills/common_widget.dart';
+import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 
 class AddNewScreen extends StatelessWidget {
   AddNewScreen({super.key});

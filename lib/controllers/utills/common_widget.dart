@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_management_app/controllers/utills/app_colors.dart';
+import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 
 commonAppBar(String title) {
   return AppBar(
