@@ -20,7 +20,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.03.w, vertical: mediaQuerySize.height * 0.01.h),
+                padding: EdgeInsets.symmetric(
+                    horizontal: mediaQuerySize.width * 0.03.w,
+                    vertical: mediaQuerySize.height * 0.01.h),
                 child: const CommonAppBar(),
               ),
               SizedBox(height: mediaQuerySize.height * 0.035.h),
@@ -33,13 +35,26 @@ class HomeScreen extends StatelessWidget {
                   title.length,
                   (index) {
                     return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w, vertical: mediaQuerySize.height * 0.015),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: mediaQuerySize.width * 0.02.w,
+                          vertical: mediaQuerySize.height * 0.015),
                       child: Container(
                           width: mediaQuerySize.width * 0.4,
                           // height: mediaQuerySize.height * 0.01,
-                          decoration: BoxDecoration(boxShadow: [const BoxShadow(color: Colors.black12, blurRadius: 1, spreadRadius: 1, offset: Offset(0, 0))], color: AppColors.secondoryColor, borderRadius: BorderRadius.circular(12)),
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                const BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 1,
+                                    spreadRadius: 1,
+                                    offset: Offset(0, 0))
+                              ],
+                              color: AppColors.secondoryColor,
+                              borderRadius: BorderRadius.circular(12)),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.045, vertical: mediaQuerySize.height * 0.03),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: mediaQuerySize.width * 0.045,
+                                vertical: mediaQuerySize.height * 0.03),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,5 +92,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  List<String> title = ['Battery', 'Roadside Service', 'Delivery', 'Transfer', 'Issue', 'Recieve', 'Truck Stock', 'Battery Search'];
+  List<String> title = [
+    'Battery',
+    'Roadside Service',
+    'Delivery',
+    'Transfer',
+    'Issue',
+    'Recieve',
+    'Truck Stock',
+    'Battery Search'
+  ];
 }
