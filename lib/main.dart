@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:inventory_management_app/view/Screens/authentication/back_to_login.dart';
-import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
 import 'package:inventory_management_app/view/Screens/transfer_screen.dart';
 
-import 'view/Screens/accout_detail/adding_resources_screen.dart';
-import 'view/Screens/authentication/sign_up_screen.dart';
+import 'view/Screens/check_status/check_status1_screen.dart';
+import 'view/Screens/check_status/check_status2_screen.dart';
+import 'view/Screens/transfer_section/incoming_transfer_screen.dart';
+import 'view/Screens/transfer_section/outcoming_transfer_screen.dart';
+import 'view/Screens/transfer_section/scan_image.dart';
+import 'view/Screens/transfer_section/transfer_screen.dart';
+import 'view/Screens/truck_stock_section/battery_search_screen.dart';
+import 'view/Screens/truck_stock_section/truck_screen.dart';
+
+
+
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(mediaQuerySize.width, mediaQuerySize.height),
       minTextAdapt: true,
       splitScreenMode: true,
-      child:  GetMaterialApp(debugShowCheckedModeBanner: false, home: AddingResourcesScreen()),
+      child:  GetMaterialApp(debugShowCheckedModeBanner: false, home: CheckStatus2Screen()),
     );
   }
 }

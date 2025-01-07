@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
+import 'package:svg_flutter/svg.dart';
 
 class CommonMidWidget extends StatelessWidget {
   String name;
@@ -33,9 +34,15 @@ class CommonMidWidget extends StatelessWidget {
                 )
               ],
             ),
+            // Row(
+            //   children: [
+            //     Image.asset('assets/images/single_battery.png',),
+            //      Image.asset('assets/images/single_battery.png',),
+            //   ],
+            // ),
             Row(
               children: [
-                Image.asset(
+                SvgPicture.asset(
                   'assets/images/double_battery.png',
                 ),
               ],
