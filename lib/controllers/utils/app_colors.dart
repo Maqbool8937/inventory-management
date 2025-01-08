@@ -9,6 +9,8 @@ class AppColors {
   static const primaryColor = Color(0xFF4573D1);
   static const secondoryColor = Color(0xffFAF7F8);
   static const shadowColor = Color(0xff0C0C0D0D);
+  static const gredientColor1 = Color(0xff4D7EE2);
+  static const gredientColor2 = Color(0xff234589);
 
   // final Color commonColor =Colors.black.withOpacity(0.07);
 }

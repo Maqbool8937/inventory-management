@@ -5,8 +5,8 @@ import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-class TransferScreen extends StatelessWidget {
-  const TransferScreen({super.key});
+class RoadSideServices2 extends StatelessWidget {
+  const RoadSideServices2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,15 @@ class TransferScreen extends StatelessWidget {
                   SizedBox(
                     height: mediaQuerySize.height * 0.025.h,
                   ),
-                  Image.asset(
-                    'assets/images/double_battery.png',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/images/battery_icon.png'),
+                      Text(
+                        'Flat tyre',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
                   SizedBox(
                     height: mediaQuerySize.height * 0.02,
@@ -42,25 +49,9 @@ class TransferScreen extends StatelessWidget {
                           CustomField(
                             text: 'Call ID',
                           ),
-                          SizedBox(
-                            height: mediaQuerySize.height * 0.02,
-                          ),
-                          CustomField(
-                            isSuffixIcon: true,
-                            suffixIcon: Icon(Icons.keyboard_arrow_down_sharp),
-                            text: 'Battery Size',
-                          )
                         ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.02,
-                  ),
-                  CustomButton(
-                    name: 'Scan Battery',
-                    width: mediaQuerySize.width,
-                    color: AppColors.primaryColor,
                   ),
                   SizedBox(
                     height: mediaQuerySize.height * 0.02,
@@ -126,17 +117,6 @@ class TransferScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.015.h,
-                  ),
-                  Text('Or'),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.015.h,
-                  ),
-                  CustomButton(
-                    width: mediaQuerySize.width,
-                    name: 'Transfer',
-                  )
                 ],
               ),
             ),

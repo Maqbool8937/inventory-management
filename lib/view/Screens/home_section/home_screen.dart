@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: CommonAppBar.commonAppBar(context),
       body: SafeArea(
           child: Container(
         height: mediaQuerySize.height.h,
@@ -19,10 +20,6 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.03.w, vertical: mediaQuerySize.height * 0.01.h),
-                child: const CommonAppBar(),
-              ),
               SizedBox(height: mediaQuerySize.height * 0.035.h),
               CommonMidWidget(),
               SizedBox(height: mediaQuerySize.height * 0.035.h),
