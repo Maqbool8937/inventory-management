@@ -6,12 +6,13 @@ import 'package:inventory_management_app/view/Screens/widgets/common_mid_widget.
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CommonAppBar.commonAppBar(context),
+      appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
       body: SafeArea(
           child: Container(
         height: mediaQuerySize.height.h,

@@ -6,13 +6,14 @@ import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart'
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
 class RoadSideServices2 extends StatelessWidget {
-  const RoadSideServices2({super.key});
+  RoadSideServices2({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CommonAppBar.commonAppBar(context),
+      appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
       body: SafeArea(
         child: Container(
           height: mediaQuerySize.height.h,

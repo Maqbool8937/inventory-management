@@ -7,16 +7,18 @@ import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart
 import 'package:inventory_management_app/view/Screens/widgets/custom_drawer.dart';
 
 class RoadSideServices3 extends StatelessWidget {
-  const RoadSideServices3({super.key});
+  RoadSideServices3({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: CommonAppBar.commonAppBar(context),
-      drawer: CustomDrawer(),
-      body: SafeArea(
-        child: Container(
+    return SafeArea(
+      child: Scaffold(
+        key: scaffoldKey,
+        appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
+        drawer: CustomDrawer(),
+        body: Container(
           height: mediaQuerySize.height.h,
           width: mediaQuerySize.width.w,
           child: Padding(

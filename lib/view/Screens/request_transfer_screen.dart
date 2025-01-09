@@ -5,13 +5,14 @@ import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart'
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
 class RequestTransferScreen extends StatelessWidget {
-  const RequestTransferScreen({super.key});
+  RequestTransferScreen({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CommonAppBar.commonAppBar(context),
+      appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.03.w, vertical: mediaQuerySize.height * 0.01.h),

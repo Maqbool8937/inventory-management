@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 
 class RoadSideServices extends StatelessWidget {
-  const RoadSideServices({super.key});
+  RoadSideServices({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: CommonAppBar.commonAppBar(context),
+      appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.03.w, vertical: mediaQuerySize.height * 0.01.h),

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextstyles {
-  static TextStyle simpleTextBold() {
+  static TextStyle simpleTextBlueBold() {
     return TextStyle(
         fontFamily: 'medium',
-        color: AppColors.whiteColor,
+        color: AppColors.buttonColor,
         fontSize: 16,
         fontWeight: FontWeight.w400);
   }
@@ -55,6 +55,13 @@ class AppTextstyles {
         fontFamily: 'bold',
         fontSize: 18,
         fontWeight: FontWeight.w500,
+        color: AppColors.fullBlackColor);
+  }
+   static TextStyle NormalBlackText() {
+    return TextStyle(
+        fontFamily: 'bold',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
         color: AppColors.fullBlackColor);
   }
 }

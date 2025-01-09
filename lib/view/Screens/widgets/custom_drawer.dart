@@ -1,44 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size mediaQuerySize = MediaQuery.of(context).size;
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.blue,
-                  ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.01, vertical: mediaQuerySize.height * 0.01),
+            child: Align(alignment: Alignment.topRight, child: Icon(Icons.cancel)),
+          ),
+          SizedBox(
+            height: mediaQuerySize.height * 0.008.h,
+          ),
+          Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.08),
+                child: Text(
+                  'Hello There!',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'User Name',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+              )),
+          SizedBox(
+            height: mediaQuerySize.height * 0.02.h,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.06),
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: AppColors.primaryColor),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.euro_symbol_outlined, color: AppColors.whiteColor),
+                    title: Text(
+                      'MS32',
+                      style: TextStyle(color: AppColors.whiteColor),
+                    ),
                   ),
-                ),
-                Text(
-                  'user@example.com',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
+                  ListTile(
+                    leading: Icon(Icons.home_filled, color: AppColors.whiteColor),
+                    title: Text(
+                      'WE32',
+                      style: TextStyle(color: AppColors.whiteColor),
+                    ),
                   ),
-                ),
-              ],
+                  ListTile(
+                    leading: Icon(Icons.home_outlined, color: AppColors.whiteColor),
+                    title: Text(
+                      '3245',
+                      style: TextStyle(color: AppColors.whiteColor),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           ListTile(
@@ -49,24 +67,17 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            leading: Icon(Icons.person),
+            title: Text('Employee Acess'),
             onTap: () {
               Navigator.pushReplacementNamed(context, '/settings');
             },
           ),
           ListTile(
-            leading: Icon(Icons.info),
-            title: Text('About'),
+            leading: Icon(Icons.add_business),
+            title: Text('Add Business'),
             onTap: () {
               Navigator.pushReplacementNamed(context, '/about');
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              // Add your logout functionality here
             },
           ),
         ],
