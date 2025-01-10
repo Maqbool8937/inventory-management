@@ -39,8 +39,9 @@ class SettingsOneScreen extends StatelessWidget {
                 height: mediaQuerySize.height * 0.03.h,
               ),
               _commonWidget(
+                ontap: () {},
                 context,
-                text: 'Theme',
+                text: 'Logout',
                 icon: Icons.edit_note_outlined,
               ),
             ]),
