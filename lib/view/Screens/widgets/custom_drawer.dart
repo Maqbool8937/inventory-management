@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
+import 'package:inventory_management_app/view/Screens/approval_screen/emplyee_confirmation_screen.dart';
+import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
+
+import '../add_new_screen/add_new_screen.dart';
+import '../login_section/login_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -63,6 +69,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text('Home'),
             onTap: () {
+              Get.to(HomeScreen());
               Navigator.pushReplacementNamed(context, '/home');
             },
           ),
@@ -70,6 +77,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.person),
             title: Text('Employee Acess'),
             onTap: () {
+              Get.to(LoginAsEmployee());
               Navigator.pushReplacementNamed(context, '/settings');
             },
           ),
@@ -77,6 +85,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.add_business),
             title: Text('Add Business'),
             onTap: () {
+                 Get.to(AddNewScreen());
               Navigator.pushReplacementNamed(context, '/about');
             },
           ),

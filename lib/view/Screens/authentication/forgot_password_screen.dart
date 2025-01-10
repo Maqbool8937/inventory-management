@@ -75,11 +75,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     isLoading: authControllers.isLoading.value,
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        await authControllers.sendPasswordResetEmail(emailresetController.text.trim(), context).then(
-                          (value) {
-                            return Get.to(() => BackToProfile());
-                          },
-                        );
+                        Get.to(() => BackToProfile());
+                        // await authControllers.sendPasswordResetEmail(emailresetController.text.trim(), context).then(
+                        //   (value) {
+                        //     return Get.to(() => BackToProfile());
+                        //   },
+                        // );
                       }
                     },
                   );

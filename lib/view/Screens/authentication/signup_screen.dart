@@ -127,18 +127,18 @@ class _SignupScreenState extends State<SignupScreen> {
                     isLoading: authControllers.isLoading.value,
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        bool da = await authControllers.signUpwithEmailandPassword(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                          collectionName: 'users',
-                          fullName: fullNameController.text.trim(),
-                          phoneNumber: phoneNumberController.text.trim(),
-                        );
-                        if (da) {
-                          Get.to(() => RegisterSuccessfull());
-                        } else {
-                          Get.snackbar('error', 'error');
-                        }
+                        // bool da = await authControllers.signUpwithEmailandPassword(
+                        //   email: emailController.text.trim(),
+                        //   password: passwordController.text.trim(),
+                        //   collectionName: 'users',
+                        //   fullName: fullNameController.text.trim(),
+                        //   phoneNumber: phoneNumberController.text.trim(),
+                        // );
+                        // if (da) {
+                        //   Get.to(() => RegisterSuccessfull());
+                        // } else {
+                        //   Get.snackbar('error', 'error');
+                        // }
                       }
                     },
                   );
