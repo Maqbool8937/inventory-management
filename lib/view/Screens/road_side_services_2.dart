@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
+import 'package:inventory_management_app/view/Screens/road_side_services_3.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
@@ -29,7 +31,10 @@ class RoadSideServices2 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset('assets/images/battery_icon.png'),
+                      Image.asset('assets/images/tyre_icon.png'),
+                      SizedBox(
+                        width: mediaQuerySize.width * 0.015,
+                      ),
                       Text(
                         'Flat tyre',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -103,6 +108,9 @@ class RoadSideServices2 extends StatelessWidget {
                           height: mediaQuerySize.height * 0.015.h,
                         ),
                         CustomButton(
+                          onTap: () {
+                            Get.to(() => RoadSideServices3());
+                          },
                           borderColor: AppColors.whiteColor,
                           isEnabled: true,
                           name: 'Complete Payment',

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
+import 'package:inventory_management_app/view/Screens/battery_and_road_screen_4.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-class PaymentScreen extends StatelessWidget {
-  PaymentScreen({super.key});
+class BatteryScreen3 extends StatelessWidget {
+  BatteryScreen3({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -29,7 +31,12 @@ class PaymentScreen extends StatelessWidget {
                 SizedBox(
                   height: mediaQuerySize.height * 0.02,
                 ),
-                CustomButton(width: mediaQuerySize.width, name: 'Tap to Change'),
+                CustomButton(
+                    onTap: () {
+                      Get.to(() => BatteryAndRoadScreen4());
+                    },
+                    width: mediaQuerySize.width,
+                    name: 'Tap to Charge'),
                 SizedBox(
                   height: mediaQuerySize.height * 0.02,
                 ),

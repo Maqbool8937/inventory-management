@@ -34,18 +34,8 @@ class CommonMidWidget extends StatelessWidget {
                 )
               ],
             ),
-            // Row(
-            //   children: [
-            //     Image.asset('assets/images/single_battery.png',),
-            //      Image.asset('assets/images/single_battery.png',),
-            //   ],
-            // ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/images/double_battery.png',
-                ),
-              ],
+            Image.asset(
+              'assets/images/double_battery.png',
             )
           ],
         ),

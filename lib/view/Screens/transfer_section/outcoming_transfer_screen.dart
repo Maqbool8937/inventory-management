@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
+import 'package:inventory_management_app/view/Screens/transfer_section/scan_image.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
@@ -70,6 +72,9 @@ class OutcomingTransferScreen extends StatelessWidget {
                   height: mediaQuerySize.height * 0.02,
                 ),
                 CustomButton(
+                  onTap: () {
+                    Get.to(() => ScanImage());
+                  },
                   name: 'Scan Battery',
                   width: mediaQuerySize.width,
                   color: AppColors.primaryColor,

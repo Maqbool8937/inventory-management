@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
-import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
-import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
+import 'package:inventory_management_app/view/Screens/settings_section/change_password_screen.dart';
 
 import '../widgets/common_appbar.dart';
 
@@ -28,6 +28,9 @@ class SettingsOneScreen extends StatelessWidget {
                 height: mediaQuerySize.height * 0.05.h,
               ),
               _commonWidget(
+                ontap: () {
+                  Get.to(() => ChangePasswordScreen());
+                },
                 context,
                 text: 'Change Password',
                 icon: Icons.edit_note_outlined,
@@ -45,37 +48,40 @@ class SettingsOneScreen extends StatelessWidget {
         )));
   }
 
-  Widget _commonWidget(BuildContext context, {required String text, required IconData icon}) {
+  Widget _commonWidget(BuildContext context, {required String text, required IconData icon, void Function()? ontap}) {
     Size mediaQuerySize = MediaQuery.of(context).size;
-    return Container(
-      height: mediaQuerySize.height * 0.08,
-      width: mediaQuerySize.width * 0.9,
-      decoration: BoxDecoration(
-        color: AppColors.primaryColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: mediaQuerySize.width * 0.03,
-          vertical: mediaQuerySize.height * 0.02,
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        height: mediaQuerySize.height * 0.08,
+        width: mediaQuerySize.width * 0.9,
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor,
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              text,
-              style: TextStyle(
-                color: AppColors.secondoryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: mediaQuerySize.width * 0.03,
+            vertical: mediaQuerySize.height * 0.02,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                  color: AppColors.secondoryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
-            ),
-            Icon(
-              icon,
-              color: AppColors.secondoryColor,
-              size: 30,
-            ),
-          ],
+              Icon(
+                icon,
+                color: AppColors.secondoryColor,
+                size: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );

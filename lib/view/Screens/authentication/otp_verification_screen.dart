@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/authentication/back_to_login.dart';
 
 import '../../../controllers/getxControllers/otp_verification_controller.dart';
 import '../../../controllers/utils/app_colors.dart';
@@ -53,7 +54,9 @@ class OtpVerificationScreen extends StatelessWidget {
               CustomButton(
                 width: mediaQuerySize.width * 0.8.w,
                 name: 'Confirm',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => BackToProfile());
+                },
               ),
               SizedBox(height: mediaQuerySize.height * 0.03),
             ],

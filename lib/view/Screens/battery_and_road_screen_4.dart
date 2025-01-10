@@ -4,8 +4,8 @@ import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-class RequestTransferScreen extends StatelessWidget {
-  RequestTransferScreen({super.key});
+class BatteryAndRoadScreen4 extends StatelessWidget {
+  BatteryAndRoadScreen4({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

@@ -4,7 +4,6 @@ import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
-import 'package:svg_flutter/svg.dart';
 import '../widgets/common_appbar.dart';
 import '../widgets/common_truck_icon.dart';
 

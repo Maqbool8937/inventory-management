@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
+import 'package:inventory_management_app/view/Screens/battery_and_road_screen_4.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
@@ -43,6 +45,9 @@ class RoadSideServices3 extends StatelessWidget {
                     height: mediaQuerySize.height * 0.025.h,
                   ),
                   CustomButton(
+                    onTap: () {
+                      Get.to(() => BatteryAndRoadScreen4());
+                    },
                     name: 'Tap to Charge',
                     width: mediaQuerySize.width,
                   ),

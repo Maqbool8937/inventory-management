@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/authentication/forgot_password.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
 import '../authentication/login_screen.dart';
@@ -52,7 +53,14 @@ class ChangePasswordScreen extends StatelessWidget {
             SizedBox(
               height: mediaQuerySize.height * 0.05.h,
             ),
-            CustomButton(name: 'Change Password')
+            CustomButton(
+              name: 'Change Password',
+              onTap: () {
+                Get.to(() => ForgotPasswordScreen(
+                      isChangePassword: true,
+                    ));
+              },
+            )
           ]),
         ))));
   }

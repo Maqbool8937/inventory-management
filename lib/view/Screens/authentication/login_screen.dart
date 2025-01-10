@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/authentication/forgot_password.dart';
+import 'package:inventory_management_app/view/Screens/authentication/sign_up_screen.dart';
+import 'package:inventory_management_app/view/Screens/bottom_navigation_bar.dart';
 
 import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
@@ -103,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextButton(
                           onPressed: () {
-                            // Get.to(() => ForgotPasswordScreen());
+                            Get.to(() => ForgotPasswordScreen());
                           },
                           child: Text('Forget Password?', style: AppTextstyles.SimpleBlackText())),
                     ],
@@ -116,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     name: 'Sign in',
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
+                        Get.offAll(() => BottomNavigationBarScreen());
                         // await authControllers
                         //     .signInWithEmailAndPassword(
                         //   email: emailControler.text.trim(),
@@ -193,7 +197,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text('If you dont have account', style: AppTextstyles.simpleGreyText()),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => SignupScreen());
+                          },
                           child: Text(
                             'Sign Up',
                             style: AppTextstyles.simpleRedText(),
