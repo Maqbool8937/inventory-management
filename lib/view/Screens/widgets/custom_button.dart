@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final double width;
   final bool isEnabled;
   bool isLoading;
+  Color borderColor;
 
   CustomButton(
       {super.key,
@@ -23,6 +24,7 @@ class CustomButton extends StatelessWidget {
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
+      this.borderColor = AppColors.primaryColor,
       this.onTap,
       this.width = 300,
       this.isEnabled = false});
@@ -33,7 +35,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       height: mediaQuerySize.height * 0.07,
       width: width,
-      decoration: BoxDecoration(border: Border.all(color: AppColors.primaryColor), color: color, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(border: Border.all(color: borderColor), color: color, borderRadius: BorderRadius.circular(10)),
       child: isLoading
           ? SpinKitThreeInOut(
               color: AppColors.whiteColor,

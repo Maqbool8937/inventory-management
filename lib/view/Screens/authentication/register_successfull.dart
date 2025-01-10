@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/approval_screen/emplyee_confirmation_screen.dart';
 
 import '../../../controllers/utils/app_textstyles.dart';
 import '../widgets/custom_button.dart';
-
 
 class RegisterSuccessfull extends StatelessWidget {
   const RegisterSuccessfull({super.key});
@@ -26,10 +25,10 @@ class RegisterSuccessfull extends StatelessWidget {
             Center(
               child: Container(
                 height: mediaQuerySize.height * 0.15.h,
-                width: mediaQuerySize.width * 0.2.w,
+                width: mediaQuerySize.width * 0.3.w,
                 decoration: BoxDecoration(
                   // color: AppColors.buttonColor,
-                  image: DecorationImage(image: AssetImage('assets/images/Vector (1).png')),
+                  image: DecorationImage(image: AssetImage('assets/images/CheckCircle.png')),
                 ),
                 child: Icon(
                   Icons.check,
@@ -48,7 +47,7 @@ class RegisterSuccessfull extends StatelessWidget {
             ),
             CustomButton(
                 onTap: () {
-                  //Get.to(() => LoginScreen());
+                  Get.to(() => EmployeeConfirmationScreen());
                 },
                 width: mediaQuerySize.width * 0.9.w,
                 name: 'Continue'),

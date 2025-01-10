@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/authentication/login_screen.dart';
+import 'package:inventory_management_app/view/Screens/authentication/register_successfull.dart';
 
 import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
@@ -131,19 +133,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     isLoading: authControllers.isLoading.value,
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        // bool da = await authControllers.signUpwithEmailandPassword(
-                        //   email: emailController.text.trim(),
-                        //   password: passwordController.text.trim(),
-                        //   collectionName: widget.isAdmin ? 'admins' : 'shortfilers',
-                        //   fullName: fullNameController.text.trim(),
-                        //   phoneNumber: phoneNumberController.text.trim(),
-                        // );
-                        // if (da) {
-                        //  // Get.to(() => RegisterSuccessfull());
-                        //   Get.snackbar('done', 'done');
-                        // } else {
-                        //   Get.snackbar('error', 'error');
-                        // }
+                        Get.to(() => RegisterSuccessfull());
                       }
                     },
                   );
@@ -205,7 +195,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     Text(' Already have an account?', style: AppTextstyles.simpleGreyText()),
                     TextButton(
                         onPressed: () {
-                          // Get.to(() => LoginScreen());
+                          Get.to(() => LoginScreen());
                         },
                         child: Text('Log in', style: AppTextstyles.simpleRedText()))
                   ],

@@ -7,7 +7,7 @@ import '../widgets/custom_button.dart';
 import 'login_screen.dart';
 
 class BackToProfile extends StatelessWidget {
-  const BackToProfile({super.key});
+  const BackToProfile.BackToHomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
@@ -37,20 +37,12 @@ class BackToProfile extends StatelessWidget {
               onTap: () {
                 Get.to(() => LoginScreen());
               },
-              name: 'Continue',
+              name: 'Back to Home',
               width: mediaQuerySize.width * 0.9.w,
             ),
             SizedBox(
               height: mediaQuerySize.height * 0.03.h,
             ),
-            TextButton(
-                onPressed: () {
-                  Get.to(() => LoginScreen());
-                },
-                child: Text(
-                  'Back to Login',
-                  style: AppTextstyles.simpleTextBlueBold(),
-                ))
           ],
         ),
       )),
