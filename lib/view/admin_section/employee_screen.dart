@@ -11,8 +11,8 @@ import 'package:inventory_management_app/view/Screens/widgets/common_mid_widget.
 import 'package:inventory_management_app/view/Screens/widgets/custom_drawer.dart';
 
 // ignore: must_be_immutable
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class AdminEmployeeScreen extends StatelessWidget {
+  AdminEmployeeScreen({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   List<String> images = [
     'assets/images/battery_icon.png',
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
                 CommonMidWidget(),
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
-                const Text('Dashboard'),
+                const Text('Empolyee'),
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
                 Wrap(
                   children: List.generate(
@@ -111,5 +111,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  List<String> title = ['Battery', 'Roadside Service', 'Issue', 'Recieve', 'Truck Stock', 'Battery Search', 'Delivery'];
+  List<String> title = ['Battery', 'Roadside Service', 'Issue', 'Recieve',  'Battery Search', 'Delivery'];
 }

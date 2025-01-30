@@ -52,7 +52,7 @@ class BatteryScreen2 extends StatelessWidget {
                           ),
                           CustomField(
                             isSuffixIcon: true,
-                            suffixIcon: Icon(Icons.keyboard_arrow_down_sharp),
+                           // suffixIcon: Icon(Icons.keyboard_arrow_down_sharp),
                             text: 'Battery Size',
                           )
                         ],

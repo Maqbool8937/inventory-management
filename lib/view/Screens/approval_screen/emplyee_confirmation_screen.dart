@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
+
 import 'package:inventory_management_app/controllers/getxControllers/auth_controllers.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/view/Screens/bottom_navigation_bar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
+
+import '../station_truck_passcode_screen.dart';
 
 class EmployeeConfirmationScreen extends StatelessWidget {
   const EmployeeConfirmationScreen({super.key});
@@ -43,29 +45,8 @@ class EmployeeConfirmationScreen extends StatelessWidget {
                   Expanded(
                       child: CustomButton(
                     onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: Container(
-                              height: mediaQuerySize.height * 0.2,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.01, vertical: mediaQuerySize.height * 0.015),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: IconButton(onPressed: () {}, icon: Icon(Icons.cancel)),
-                                    ),
-                                  ),
-                                  Text(
-                                    textAlign: TextAlign.center,
-                                    'Request sent for admin approval!',
-                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                                  ),
-                                ],
-                              )),
-                        ),
-                      );
+                      Get.to(StationTruckPasscodeScreen());
+                      
                     },
                     name: 'Yes',
                   ))

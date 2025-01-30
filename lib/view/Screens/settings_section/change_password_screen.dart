@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/controllers/auth_controllers.dart';
 import 'package:inventory_management_app/view/Screens/authentication/forgot_password.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
@@ -8,12 +9,20 @@ import '../authentication/login_screen.dart';
 import '../widgets/common_appbar.dart';
 import '../widgets/custom-field.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
+class ChangePasswordScreen extends StatefulWidget {
   ChangePasswordScreen({super.key});
+
+  @override
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
+}
+
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+   // AuthControllers authControllers = Get.put(AuthControllers());
+    TextEditingController passwordController =TextEditingController();
     Size mediaQuerySize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -29,8 +38,8 @@ class ChangePasswordScreen extends StatelessWidget {
             SizedBox(
               height: mediaQuerySize.height * 0.05.h,
             ),
-            Obx(
-              () => CustomField(
+            
+              CustomField( 
                 text: 'Password',
                 controller: passwordController,
                 validator: (value) {
@@ -40,16 +49,19 @@ class ChangePasswordScreen extends StatelessWidget {
                   return null;
                 },
                 isPasswordField: true,
-                isObscured: !authControllers.isPasswordVisible.value,
+               // isObscured: !authControllers.isPasswordVisible.value,
                 isSuffixIcon: true,
                 suffixIcon: IconButton(
                   icon: Icon(
-                    authControllers.isPasswordVisible.value ? Icons.visibility : Icons.visibility_off,
+                    Icons.visibility,
+                    
+                    //authControllers.isPasswordVisible.value ? Icons.visibility : Icons.visibility_off,
                   ),
-                  onPressed: authControllers.togglePasswordVisibility,
+                  onPressed: (){},
+                 // onPressed: authControllers.togglePasswordVisibility,
                 ),
               ),
-            ),
+            
             SizedBox(
               height: mediaQuerySize.height * 0.05.h,
             ),

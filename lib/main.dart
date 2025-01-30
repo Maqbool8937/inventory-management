@@ -12,6 +12,7 @@ import 'package:inventory_management_app/view/Screens/battery_screen_2.dart';
 
 import 'view/Screens/check_status/check_status1_screen.dart';
 import 'view/Screens/check_status/check_status2_screen.dart';
+import 'view/Screens/station_truck_passcode_screen.dart';
 import 'view/Screens/transfer_section/incoming_transfer_screen.dart';
 import 'view/Screens/transfer_section/outcoming_transfer_screen.dart';
 import 'view/Screens/transfer_section/scan_image.dart';

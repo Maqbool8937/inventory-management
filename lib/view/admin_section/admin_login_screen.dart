@@ -8,22 +8,22 @@ import 'package:inventory_management_app/view/Screens/bottom_navigation_bar.dart
 import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
 import '../../../controllers/utils/app_textstyles.dart';
+import '../Screens/authentication/back_to_home_screen.dart';
+import '../Screens/widgets/custom-field.dart';
+import '../Screens/widgets/custom_button.dart';
 
-import '../../admin_section/admin_login_screen.dart';
-import '../widgets/custom-field.dart';
-import '../widgets/custom_button.dart';
-import '../widgets/social_media_icons.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+
+class AdminLoginScreen extends StatefulWidget {
+  const AdminLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AdminLoginScreen> createState() => _LoginScreenState();
 }
 
 
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<AdminLoginScreen> {
 
   GlobalKey<FormState> formKey = GlobalKey();
 AuthControllers authControllers = Get.put(AuthControllers());
@@ -119,10 +119,10 @@ final TextEditingController passwordController = TextEditingController();
                   ),
                   CustomButton(
                     isLoading: authControllers.isLoading.value,
-                    name: 'Continue',
+                    name: 'Login',
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        Get.offAll(() => BottomNavigationBarScreen());
+                       Get.offAll(() => BackToProfile.BackToHomeScreen());
                         // await authControllers
                         //     .signInWithEmailAndPassword(
                         //   email: emailControler.text.trim(),
@@ -143,107 +143,7 @@ final TextEditingController passwordController = TextEditingController();
                       print('no');
                     },
                   ),
-                   SizedBox(
-                    height: mediaQuerySize.height * 0.03.h,
-                  ),
-                   CustomButton(
-                    isLoading: authControllers.isLoading.value,
-                    name: 'Admin Login',
-                    onTap: (){
-                      Get.offAll(AdminLoginScreen());
-                    },
-                    // onTap: () async {
-                    //   if (formKey.currentState!.validate()) {
-                    //     Get.offAll(() => AdminLoginScreen());
-                        // await authControllers
-                        //     .signInWithEmailAndPassword(
-                        //   email: emailControler.text.trim(),
-                        //   password: passwordController.text.trim(),
-                        // )
-                        //     .then(
-                        //   (value) {
-                        //     if (value == true) {
-                        //       //return Get.to(() => ImageScreen());
-                        //     } else {
-                        //       print('the error');
-                        //     }
-                        //   },
-                        // );
-
-                        // Get.to(() => ForgotPasswordScreen());
-                    //   }
-                    //   print('no');
-                    // },
-                  ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.03.h,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w),
-                        child: Text('Or With', style: AppTextstyles.simpleGreyText()),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.02.h,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.01.w, vertical: mediaQuerySize.height * 0.01.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SocialMediaIconsRow(
-                          imgUrl: 'assets/images/google3.png',
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        SocialMediaIconsRow(
-                          imgUrl: 'assets/images/fb.png',
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        SocialMediaIconsRow(
-                          imgUrl: 'assets/images/appl_img.png',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.015.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('If you dont have account', style: AppTextstyles.simpleGreyText()),
-                      TextButton(
-                          onPressed: () {
-                            Get.to(() => SignupScreen());
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: AppTextstyles.simpleRedText(),
-                          ))
-                    ],
-                  ),
-                  SizedBox(
-                    height: mediaQuerySize.height * 0.03.h,
-                  ),
+                  
                 ],
               ),
             ),

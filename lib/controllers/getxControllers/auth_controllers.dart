@@ -17,6 +17,8 @@ class AuthControllers extends GetxController {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
+ 
+
   // Future<bool> signUpwithEmailandPassword({required String email, required String password, required String collectionName, required String fullName, required String phoneNumber}) async {
   //   try {
   //     isLoading.value = true;

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
-import 'package:inventory_management_app/view/Screens/approval_screen/emplyee_confirmation_screen.dart';
 import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
 
 import '../add_new_screen/add_new_screen.dart';
@@ -15,9 +14,14 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.01, vertical: mediaQuerySize.height * 0.01),
-            child: Align(alignment: Alignment.topRight, child: Icon(Icons.cancel)),
+          GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.01, vertical: mediaQuerySize.height * 0.01),
+              child: Align(alignment: Alignment.topRight, child: Icon(Icons.cancel)),
+            ),
           ),
           SizedBox(
             height: mediaQuerySize.height * 0.008.h,

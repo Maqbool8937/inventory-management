@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
 
 import '../../../controllers/utils/app_textstyles.dart';
+import '../bottom_navigation_bar.dart';
 import '../widgets/custom_button.dart';
 import 'login_screen.dart';
 
@@ -35,9 +37,10 @@ class BackToProfile extends StatelessWidget {
             ),
             CustomButton(
               onTap: () {
-                Get.to(() => LoginScreen());
+               Get.offAll(() => BottomNavigationBarScreen());
+
               },
-              name: 'Back to Home',
+              name: 'Continue',
               width: mediaQuerySize.width * 0.9.w,
             ),
             SizedBox(
