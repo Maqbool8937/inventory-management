@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
-import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-import '../widgets/common_mid_widget.dart';
 import '../widgets/common_sales_history.dart';
 
 class ForMoreDetailScreen extends StatelessWidget {
@@ -52,12 +50,12 @@ class ForMoreDetailScreen extends StatelessWidget {
       )),
       floatingActionButton: FloatingActionButton.small(
         onPressed: () {
-          // Your action here
+         
         },
-        backgroundColor: AppColors.primaryColor, // Set your desired background color
-        child: Icon(Icons.arrow_back, color: Colors.white), // Adjust icon color if needed
+        backgroundColor: AppColors.primaryColor, 
+        child: Icon(Icons.arrow_back, color: Colors.white), 
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat, // Position on the left side
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat, 
     );
   }
 }

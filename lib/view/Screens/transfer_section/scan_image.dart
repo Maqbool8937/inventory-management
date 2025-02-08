@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
-import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
-import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-import '../widgets/common_mid_widget.dart';
-import '../widgets/common_sales_history.dart';
 
 class ScanImage extends StatelessWidget {
   const ScanImage({super.key});

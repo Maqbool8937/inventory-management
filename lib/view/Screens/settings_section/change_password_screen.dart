@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management_app/controllers/auth_controllers.dart';
 import 'package:inventory_management_app/view/Screens/authentication/forgot_password.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
-import '../authentication/login_screen.dart';
 import '../widgets/common_appbar.dart';
 import '../widgets/custom-field.dart';
 
@@ -21,7 +19,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-   // AuthControllers authControllers = Get.put(AuthControllers());
     TextEditingController passwordController =TextEditingController();
     Size mediaQuerySize = MediaQuery.of(context).size;
 

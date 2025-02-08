@@ -10,7 +10,6 @@ import '../../../controllers/utils/app_textstyles.dart';
 import '../widgets/customField.dart';
 import '../widgets/custom_button.dart';
 import 'back_to_profile.dart';
-import 'change_password_fromlink.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   ForgotPasswordScreen({super.key});
@@ -76,11 +75,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         Get.to(() => BackToProfile());
-                        // await authControllers.sendPasswordResetEmail(emailresetController.text.trim(), context).then(
-                        //   (value) {
-                        //     return Get.to(() => BackToProfile());
-                        //   },
-                        // );
+                        
                       }
                     },
                   );

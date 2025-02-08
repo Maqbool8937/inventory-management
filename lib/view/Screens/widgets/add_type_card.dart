@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'common_dropdown.dart';
 
+
+// ignore: must_be_immutable
 class AddTypeCard extends StatefulWidget {
   final List<String> items;
   final String hintText;
@@ -28,15 +29,7 @@ class _AddTypeCardState extends State<AddTypeCard> {
               widget.hintText,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
-            // DropdownInCard(
-            //     selected: widget.selectedItem,
-            //     items: widget.items,
-            //     hintText: "Select Type",
-            //     onChange: (value) {
-            //       if (widget.onChange != null) {
-            //         widget.onChange!(value);
-            //       }
-            //     }),
+           
           ],
         ),
       ),

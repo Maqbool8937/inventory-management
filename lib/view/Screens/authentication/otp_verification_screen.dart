@@ -44,9 +44,9 @@ class OtpVerificationScreen extends StatelessWidget {
                 focusedBorderColor: AppColors.buttonColor,
                 cursorColor: Colors.blue,
                 showFieldAsBox: true,
-                margin: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w), // Increase horizontal spacing
+                margin: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w), 
                 onCodeChanged: (String code) {
-                  // Handle changes if needed
+                 
                 },
                 onSubmit: (String verificationCode) {},
               ),

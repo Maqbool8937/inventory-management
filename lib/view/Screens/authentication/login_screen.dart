@@ -152,28 +152,7 @@ final TextEditingController passwordController = TextEditingController();
                     onTap: (){
                       Get.offAll(AdminLoginScreen());
                     },
-                    // onTap: () async {
-                    //   if (formKey.currentState!.validate()) {
-                    //     Get.offAll(() => AdminLoginScreen());
-                        // await authControllers
-                        //     .signInWithEmailAndPassword(
-                        //   email: emailControler.text.trim(),
-                        //   password: passwordController.text.trim(),
-                        // )
-                        //     .then(
-                        //   (value) {
-                        //     if (value == true) {
-                        //       //return Get.to(() => ImageScreen());
-                        //     } else {
-                        //       print('the error');
-                        //     }
-                        //   },
-                        // );
-
-                        // Get.to(() => ForgotPasswordScreen());
-                    //   }
-                    //   print('no');
-                    // },
+                   
                   ),
                   SizedBox(
                     height: mediaQuerySize.height * 0.03.h,

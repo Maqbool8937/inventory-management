@@ -35,7 +35,7 @@ class ReportsCardWidget extends StatelessWidget {
             height: mediaQuerySize.height * 0.04.h,
             width: mediaQuerySize.width * 0.8.w,
             decoration: BoxDecoration(
-              color: AppColors.buttonColor, // Replace with AppColors.buttonColor if needed
+              color: AppColors.buttonColor, 
               borderRadius: BorderRadius.circular(0),
             ),
             child: Center(

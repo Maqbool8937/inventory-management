@@ -23,27 +23,3 @@ class SocialMediaIconsRow extends StatelessWidget {
   }
 }
 
-
-//  Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//         children: [
-//           IconButton(
-//             icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
-//             onPressed: () {
-//               // Handle Google action
-//             },
-//           ),
-//           IconButton(
-//             icon: FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
-//             onPressed: () {
-//               // Handle Facebook action
-//             },
-//           ),
-//           IconButton(
-//             icon: FaIcon(FontAwesomeIcons.apple, color: Colors.black),
-//             onPressed: () {
-//               // Handle Apple action
-//             },
-//           ),
-//         ],
-//       ),

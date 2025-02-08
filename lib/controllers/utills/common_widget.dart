@@ -10,7 +10,9 @@ commonAppBar(String title) {
       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
     ),
     leading: IconButton(
-      onPressed: () {},
+      onPressed: () {
+        
+      },
       icon: Container(
         decoration: BoxDecoration(
             color: AppColors.primaryColor,
@@ -21,12 +23,7 @@ commonAppBar(String title) {
         ),
       ),
     ),
-    // leading: Container(
-    //     padding: EdgeInsets.zero,
-    //     decoration: BoxDecoration(
-    //         color: AppColors.primaryColor,
-    //         borderRadius: BorderRadius.circular(5)),
-    //     child: Icon(Icons.menu)),
+   
     actions: [
       Container(
           margin: EdgeInsets.only(right: 10),

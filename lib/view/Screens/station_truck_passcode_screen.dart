@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inventory_management_app/controllers/utills/common_dropdown.dart';
-import 'package:inventory_management_app/controllers/utills/common_textfield.dart';
 import 'package:inventory_management_app/controllers/utills/common_widget.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
@@ -48,15 +47,7 @@ class StationTruckPasscodeScreen extends StatelessWidget {
                     height: 10,
                   ),
                   CustomField(text: 'Truck Passcode',isPrefixIcon: true,suffixIcon: Icon(Icons.code_outlined,color: Colors.red,),),
-                  // DropdownInCard(
-                  //   selected: "Truck Passcode",
-                  //   items: [
-                  //     "Station",
-                  //   ],
-                  //   hintText: "Category",
-                  //   onChange: () {},
-                  //   icon: Icons.home,
-                  // ),
+                 
                   SizedBox(
                     height: 10,
                   ),

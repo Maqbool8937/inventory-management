@@ -25,11 +25,11 @@ class AllMembersWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (controller.selectedRole.value == "Manager") {
-          Get.to(ManagerScreen());
+          Get.to(()=>  ManagerScreen());
         } else if (controller.selectedRole.value == "Employee") {
-          Get.to(AdminEmployeeScreen());
+          Get.to(()=> AdminEmployeeScreen());
         } else if (controller.selectedRole.value == "User") {
-          Get.to(AdminEmployeeScreen());
+          Get.to(()=> AdminEmployeeScreen());
         } else {
           Get.snackbar(
             "Error",
@@ -79,7 +79,8 @@ class AllMembersWidget extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-   child: Obx(() {
+                
+                  child: Obx(() {
                   return DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: controller.selectedRole.value,

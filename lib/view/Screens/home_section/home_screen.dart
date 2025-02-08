@@ -42,10 +42,12 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
                 CommonMidWidget(),
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
-                const Text('Dashboard'),
+                  Text('Dashboard'),
                 SizedBox(height: mediaQuerySize.height * 0.035.h),
                 Wrap(
+                   
                   children: List.generate(
+
                     title.length,
                     (index) {
                       return Padding(

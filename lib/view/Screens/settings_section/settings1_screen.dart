@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
-import 'package:inventory_management_app/view/Screens/authentication/signup_screen.dart';
 import 'package:inventory_management_app/view/Screens/settings_section/change_password_screen.dart';
 import 'package:inventory_management_app/view/admin_section/all_member_screen.dart';
 

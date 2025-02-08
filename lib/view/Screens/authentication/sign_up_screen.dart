@@ -13,6 +13,7 @@ import '../widgets/custom_button.dart';
 import '../widgets/social_media_icons.dart';
 import '../widgets/terms_condition.dart';
 
+// ignore: must_be_immutable
 class SignupScreen extends StatefulWidget {
   bool isAdmin;
   SignupScreen({super.key, this.isAdmin = false});

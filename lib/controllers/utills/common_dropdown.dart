@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class DropdownInCard extends StatefulWidget {
   final List<String> items;
   final String hintText;
@@ -73,14 +74,11 @@ class _DropdownInCardState extends State<DropdownInCard> {
                       widget.onChange(value);
                     },
                     buttonStyleData: ButtonStyleData(
-                      // height: 50,
-                      // width: 160,
+                     
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        // border: Border.all(
-                        //   color: Colors.black26,
-                        // ),
+                        
                         color: const Color.fromARGB(255, 234, 235, 236),
                       ),
                       elevation: 2,
@@ -94,8 +92,7 @@ class _DropdownInCardState extends State<DropdownInCard> {
                       iconDisabledColor: Colors.black,
                     ),
                     dropdownStyleData: DropdownStyleData(
-                      // maxHeight: 200,
-                      // width: 200,
+                     
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
                         color: Colors.white,

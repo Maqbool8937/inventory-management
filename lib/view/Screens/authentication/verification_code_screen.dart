@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 import '../../../controllers/utils/app_colors.dart';
 import '../../../controllers/utils/app_textstyles.dart';
@@ -12,7 +11,6 @@ import '../widgets/custom_button.dart';
 class VerificationCodeScreen extends StatelessWidget {
   VerificationCodeScreen({super.key});
 
-  //final VerificationController controller = Get.put(VerificationController());
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +49,9 @@ class VerificationCodeScreen extends StatelessWidget {
   focusedBorderColor: AppColors.buttonColor,
   cursorColor: Colors.blue,
   showFieldAsBox: true,
-  margin:  EdgeInsets.symmetric(horizontal: mediaQuerySize.width*0.02.w), // Increase horizontal spacing
+  margin:  EdgeInsets.symmetric(horizontal: mediaQuerySize.width*0.02.w), 
   onCodeChanged: (String code) {
-    // Handle changes if needed
+    
   },
   onSubmit: (String verificationCode) {
    

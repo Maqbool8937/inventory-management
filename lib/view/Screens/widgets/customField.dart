@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// ignore: must_be_immutable
 class CustomField extends StatelessWidget {
   final bool isPrefixIcon;
   final bool isSuffixIcon;

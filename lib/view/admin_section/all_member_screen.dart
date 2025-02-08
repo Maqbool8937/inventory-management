@@ -24,8 +24,8 @@ class _AllMemberScreenState extends State<AllMemberScreen> {
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              vertical: mediaQuerySize.height * 0.03,
-              horizontal: mediaQuerySize.width * 0.05,
+              vertical: mediaQuerySize.height * 0.03.h,
+              horizontal: mediaQuerySize.width * 0.05.w,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,8 +33,6 @@ class _AllMemberScreenState extends State<AllMemberScreen> {
                 SizedBox(height: mediaQuerySize.height * 0.06.h),
                 Text('All Members', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
-
-                // Pass unique name & role to each widget
                 AllMembersWidget(name: "John Wick", initialRole: "Employee"),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
 

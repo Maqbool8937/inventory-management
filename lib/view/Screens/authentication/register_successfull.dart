@@ -30,11 +30,7 @@ class RegisterSuccessfull extends StatelessWidget {
                   // color: AppColors.buttonColor,
                   image: DecorationImage(image: AssetImage('assets/images/CheckCircle.png')),
                 ),
-                // child: Icon(
-                //   Icons.check,
-                //   color: Colors.white,
-                //   size: 40,
-                // ),
+                
               ),
             ),
             Text('Registration Successful!', style: AppTextstyles.BoldBlackText()),

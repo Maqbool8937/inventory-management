@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
           : TextButton(
               onPressed: onTap,
               child: Text(
-                name,
+                name ,
                 style: textStyle,
               )),
     );

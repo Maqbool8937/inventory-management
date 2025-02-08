@@ -9,6 +9,7 @@ import '../widgets/customField.dart';
 import '../widgets/custom_button.dart';
 import 'back_to_profile.dart';
 
+// ignore: must_be_immutable
 class ChangePasswordFromlink extends StatelessWidget {
   ChangePasswordFromlink({super.key});
   GlobalKey<FormState> formKey = GlobalKey();

@@ -4,11 +4,27 @@ import 'package:get/get.dart';
 import 'package:inventory_management_app/view/Screens/road_side_services_2.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 
+// ignore: must_be_immutable
 class RoadSideServices extends StatelessWidget {
   RoadSideServices({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  List<String> titles = ['Flat tyre', 'Inbound Release', 'Tow', 'Gas', 'Jump Start', 'Mechanic', 'Lockout', 'More'];
-  List<String> images = ['assets/images/tyre_icon.png', 'assets/images/car_icon.png', 'assets/images/tow-truck_icon.png', 'assets/images/gas-pump_icon.png', 'assets/images/jump-start_icon.png', 'assets/images/mechanic_icon.png', 'assets/images/lockout_icon.png', 'assets/images/more_icon.png'];
+  List<String> titles = [
+    'Flat tyre',
+     'Inbound Release', 
+     'Tow', 'Gas', 
+     'Jump Start',
+      'Mechanic',
+       'Lockout',
+        'More'];
+  List<String> images = [
+    'assets/images/tyre_icon.png',
+     'assets/images/car_icon.png',
+      'assets/images/tow-truck_icon.png',
+       'assets/images/gas-pump_icon.png',
+        'assets/images/jump-start_icon.png', 
+        'assets/images/mechanic_icon.png', 
+        'assets/images/lockout_icon.png',
+         'assets/images/more_icon.png'];
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;

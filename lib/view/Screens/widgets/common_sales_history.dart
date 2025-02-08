@@ -10,7 +10,7 @@ class CommonSalesHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
-    return  Container(
+    return Container(
                 width: mediaQuerySize.width*0.9.w,
                 decoration: BoxDecoration(
                   color: AppColors.secondoryColor,

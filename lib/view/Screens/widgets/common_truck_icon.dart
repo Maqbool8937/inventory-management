@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controllers/utils/app_colors.dart';
 import '../../../controllers/utils/app_textstyles.dart';
 
+// ignore: must_be_immutable
 class CommonTruckIcon extends StatelessWidget {
   String text1;
   String text2;

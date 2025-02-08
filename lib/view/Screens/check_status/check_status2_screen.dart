@@ -42,7 +42,6 @@ class CheckStatus2Screen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(55)
                   ),
                   child: Icon(Icons.check,color: Colors.white,size: 50,),
-                //  child: Center(child: Text('!',style: TextStyle(color: Colors.white,fontSize: 43,fontWeight: FontWeight.bold))),
                 ),
                                          SizedBox(height: mediaQuerySize.height*0.01.h,),
 
@@ -55,7 +54,7 @@ Please wait before transferring batteries''',
   textAlign: TextAlign.center, // Optional: Align the text
   style: TextStyle(fontSize: 16), // Optional: Add styling
 ),
-                         SizedBox(height: mediaQuerySize.height*0.01.h,),
+                    SizedBox(height: mediaQuerySize.height*0.01.h,),
 
 CustomButton(
   width: mediaQuerySize.width*0.6.w,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:inventory_management_app/controllers/getxControllers/auth_controllers.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/view/Screens/bottom_navigation_bar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';

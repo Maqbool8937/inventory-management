@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
-import 'package:svg_flutter/svg.dart';
 
+
+// ignore: must_be_immutable
 class CommonMidWidget extends StatelessWidget {
   String name;
   CommonMidWidget({super.key, this.name = 'Adam 55'});
@@ -21,7 +22,7 @@ class CommonMidWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   'Good Afternoon!',
                   style: TextStyle(color: Color.fromARGB(221, 255, 255, 255), fontSize: 18, fontWeight: FontWeight.w400),
                 ),
