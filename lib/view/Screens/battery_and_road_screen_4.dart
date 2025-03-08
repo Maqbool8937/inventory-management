@@ -75,7 +75,28 @@ class BatteryAndRoadScreen4 extends StatelessWidget {
                 SizedBox(
                   height: mediaQuerySize.height * 0.02,
                 ),
-                CustomButton(width: mediaQuerySize.width, name: 'Request Transfer'),
+                CustomButton
+              
+                (
+                  onTap: (){
+                     showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(onPressed: (){
+              Navigator.pop(context);
+            }, icon: Icon(Icons.cancel_outlined)),
+          ),
+          content:Text('Request sent for Admin Approval!',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w400),),
+         
+        );
+      },
+    ); 
+        
+                  },
+                  width: mediaQuerySize.width, name: 'Request Transfer'),
               ],
             ),
           ),

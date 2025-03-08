@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/controllers/utils/app_textstyles.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
@@ -49,7 +50,7 @@ class ForMoreDetailScreen extends StatelessWidget {
       )),
       floatingActionButton: FloatingActionButton.small(
         onPressed: () {
-          // Your action here
+          Get.back();
         },
         backgroundColor: AppColors.primaryColor, // Set your desired background color
         child: Icon(Icons.arrow_back, color: Colors.white), // Adjust icon color if needed

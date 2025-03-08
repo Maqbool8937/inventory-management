@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/view/Screens/authentication/register_successfull.dart';
+import 'package:inventory_management_app/view/Screens/home_section/home_screen.dart';
 
 
 import '../../../controllers/auth_controllers.dart';
@@ -127,18 +130,18 @@ class _SignupScreenState extends State<SignupScreen> {
                     isLoading: authControllers.isLoading.value,
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        // bool da = await authControllers.signUpwithEmailandPassword(
-                        //   email: emailController.text.trim(),
-                        //   password: passwordController.text.trim(),
-                        //   collectionName: 'users',
-                        //   fullName: fullNameController.text.trim(),
-                        //   phoneNumber: phoneNumberController.text.trim(),
-                        // );
-                        // if (da) {
-                        //   Get.to(() => RegisterSuccessfull());
-                        // } else {
-                        //   Get.snackbar('error', 'error');
-                        // }
+                        bool da = await authControllers.signUpwithEmailandPassword(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          collectionName: 'users',
+                          fullName: fullNameController.text.trim(),
+                          phoneNumber: phoneNumberController.text.trim(),
+                        );
+                        if (da) {
+                          Get.to(() => RegisterSuccessfull());
+                        } else {
+                          Get.snackbar('error', 'error');
+                        }
                       }
                     },
                   );
@@ -174,14 +177,33 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocialMediaIconsRow(
-                        imgUrl: 'assets/images/google3.png',
+                     GestureDetector(
+  onTap: () async {
+    User? user = await authControllers.signInWithGoogle();
+    
+    if (user != null) {
+      
+      Get.to(() =>HomeScreen()); 
+    } else {
+     
+      Get.snackbar("Sign-in Failed", "Please try again.");
+    }
+  },
+                        child: SocialMediaIconsRow(
+                          imgUrl: 'assets/images/google3.png',
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       SocialMediaIconsRow(
                         imgUrl: 'assets/images/fb.png',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                       SocialMediaIconsRow(
+                        imgUrl: 'assets/images/appl_img.png',
                       ),
                       SizedBox(
                         width: 10,

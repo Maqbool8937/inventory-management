@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/controllers/auth_controllers.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/view/Screens/settings_section/change_password_screen.dart';
 import 'package:inventory_management_app/view/admin_section/all_member_screen.dart';
@@ -13,6 +14,7 @@ class SettingsOneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   
     Size mediaQuerySize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -49,7 +51,9 @@ class SettingsOneScreen extends StatelessWidget {
                 _commonWidget(
                   context,
                   ontap: () {
+
                     _showLogoutDialog(context, mediaQuerySize);
+
                   },
                   text: 'Logout',
                   icon: Icons.logout,
@@ -63,6 +67,7 @@ class SettingsOneScreen extends StatelessWidget {
   }
 
   void _showLogoutDialog(BuildContext context, Size mediaQuerySize) {
+    AuthControllers authControllers = Get.put(AuthControllers());
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -123,6 +128,7 @@ class SettingsOneScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                          authControllers.signOut();
                      Get.to(LoginScreen());
                    //    Get.to(SignupScreen());
                     },

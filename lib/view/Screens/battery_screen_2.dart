@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
 import 'package:inventory_management_app/view/Screens/battery_screen_3.dart';
-import 'package:inventory_management_app/view/Screens/transfer_section/scan_image.dart';
 import 'package:inventory_management_app/view/Screens/transfer_section/transfer_screen.dart';
 import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
+import 'package:inventory_management_app/view/Screens/widgets/scan_battery_widget.dart';
+
+import '../../controllers/services/firebase_service.dart';
 
 class BatteryScreen2 extends StatelessWidget {
   BatteryScreen2({super.key});
@@ -15,6 +17,7 @@ class BatteryScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseService batteryService = Get.put(FirebaseService()); 
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
@@ -64,7 +67,8 @@ class BatteryScreen2 extends StatelessWidget {
                   ),
                   CustomButton(
                     onTap: () {
-                      Get.to(() => ScanImage());
+                       Get.to(() => ScanBatteryWidget());
+                      //Get.to(() => ScanImage());
                     },
                     name: 'Scan Battery',
                     width: mediaQuerySize.width,

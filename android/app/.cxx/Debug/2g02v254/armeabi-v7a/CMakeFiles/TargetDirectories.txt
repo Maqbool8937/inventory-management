@@ -1,0 +1,2 @@
+C:/Users/user/OneDrive/Documents/inventory_management_app/android/app/.cxx/Debug/2g02v254/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/user/OneDrive/Documents/inventory_management_app/android/app/.cxx/Debug/2g02v254/armeabi-v7a/CMakeFiles/rebuild_cache.dir

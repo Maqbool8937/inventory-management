@@ -85,17 +85,22 @@ class IncomingTransferScreen extends StatelessWidget {
               SizedBox(
                 height: mediaQuerySize.height * 0.03.h,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Container(
-                    height: mediaQuerySize.height * 0.04.h,
-                    width: mediaQuerySize.width * 0.08.w,
-                    decoration: BoxDecoration(color: AppColors.primaryColor, borderRadius: BorderRadius.circular(15)),
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: AppColors.secondoryColor,
+              GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Container(
+                      height: mediaQuerySize.height * 0.04.h,
+                      width: mediaQuerySize.width * 0.08.w,
+                      decoration: BoxDecoration(color: AppColors.primaryColor, borderRadius: BorderRadius.circular(15)),
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: AppColors.secondoryColor,
+                      ),
                     ),
                   ),
                 ),

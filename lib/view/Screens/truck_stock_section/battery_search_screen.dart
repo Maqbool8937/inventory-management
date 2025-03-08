@@ -46,12 +46,12 @@ class BatterySearchScreen extends StatelessWidget {
                         ),
                         isSuffixIcon: true,
                         suffixIcon: Padding(
-                          padding: EdgeInsets.symmetric(vertical: mediaQuerySize.height * 0.01.h, horizontal: mediaQuerySize.width * 0.03.w),
+                          padding: EdgeInsets.symmetric(vertical: mediaQuerySize.height * 0.01.h, horizontal: mediaQuerySize.width * 0.01.w),
                           child: DropdownButton<String>(
                             items: [
-                              DropdownMenuItem(value: 'Option 1', child: Text('Option 1')),
-                              DropdownMenuItem(value: 'Option 2', child: Text('Option 2')),
-                              DropdownMenuItem(value: 'Option 3', child: Text('Option 3')),
+                              DropdownMenuItem(value: '244-C', child: Text('244-C')),
+                              DropdownMenuItem(value: '244-C', child: Text('244-C')),
+                               DropdownMenuItem(value: '244-C', child: Text('244-C')),
                             ],
                             onChanged: (value) {
                               print("Selected: $value");

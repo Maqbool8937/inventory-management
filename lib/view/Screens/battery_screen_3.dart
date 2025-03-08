@@ -7,6 +7,8 @@ import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart
 import 'package:inventory_management_app/view/Screens/widgets/custom-field.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart';
 
+import 'payment_method/input_amount_screen.dart';
+
 class BatteryScreen3 extends StatelessWidget {
   BatteryScreen3({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -86,11 +88,43 @@ class BatteryScreen3 extends StatelessWidget {
                 SizedBox(
                   height: mediaQuerySize.height * 0.02,
                 ),
-                CustomButton(width: mediaQuerySize.width, name: 'Pay'),
+                CustomButton(
+                  onTap: (){
+                  Get.to(()=>InputAmountScreen());
+              
+    
+                  },
+                  width: mediaQuerySize.width, name: 'Pay'),
                 SizedBox(
                   height: mediaQuerySize.height * 0.02,
                 ),
                 CustomButton(
+                  onTap: (){
+                     showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(onPressed: (){
+              Navigator.pop(context);
+            }, icon: Icon(Icons.cancel_outlined)),
+          ),
+          content: Column(
+          mainAxisSize: MainAxisSize.min,
+            children: [Text('Your Reciept Number is',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                     Text('000001',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
+            ],
+          ),
+          actions: [
+          CustomButton(name: 'Copy Number')
+          
+          ],
+        );
+      },
+    ); 
+        
+                  },
                   borderColor: AppColors.primaryColor,
                   color: Colors.transparent,
                   width: mediaQuerySize.width,

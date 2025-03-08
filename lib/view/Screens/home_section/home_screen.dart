@@ -1,117 +1,110 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management_app/controllers/utils/app_colors.dart';
-import 'package:inventory_management_app/view/Screens/road_side_services.dart';
+import 'package:inventory_management_app/controllers/dashboard_controller.dart';
 import 'package:inventory_management_app/view/Screens/battery_screen_2.dart';
+import 'package:inventory_management_app/view/Screens/road_side_services.dart';
 import 'package:inventory_management_app/view/Screens/truck_stock_section/battery_search_screen.dart';
 import 'package:inventory_management_app/view/Screens/truck_stock_section/truck_screen.dart';
-import 'package:inventory_management_app/view/Screens/widgets/common_appbar.dart';
-import 'package:inventory_management_app/view/Screens/widgets/common_mid_widget.dart';
 import 'package:inventory_management_app/view/Screens/widgets/custom_drawer.dart';
+import '../widgets/common_appbar.dart';
+import '../widgets/common_mid_widget.dart';
 
-// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  List<String> images = [
-    'assets/images/battery_icon.png',
-    'assets/images/road_side_icon.png',
-    'assets/images/issue_icon.png',
-    'assets/images/receive_icon.png',
-    'assets/images/truck_stock_icon.png',
-    'assets/images/battery_search_icon.png',
-    'assets/images/delivery_icon.png',
-  ];
+  final DashboardController dashboardController = Get.put(DashboardController());
+
+  final Map<String, Widget Function()> routes = {
+    'BatteryScreen2': () => BatteryScreen2(),
+    'RoadSideServices': () => RoadSideServices(),
+    'BatterySearchScreen': () => BatterySearchScreen(),
+    'TruckScreen': () => TruckScreen(),
+    'IssuesScreen': () => TruckScreen(),
+    'BatterySearchScreen': () => BatterySearchScreen(),
+    'RoadSideServices': () => RoadSideServices(),
+   
+  };
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         key: scaffoldKey,
         drawer: CustomDrawer(),
         appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
-        body: Container(
-          height: mediaQuerySize.height.h,
-          width: mediaQuerySize.width.w,
-          color: AppColors.whiteColor,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: mediaQuerySize.height * 0.035.h),
-                CommonMidWidget(),
-                SizedBox(height: mediaQuerySize.height * 0.035.h),
-                  Text('Dashboard'),
-                SizedBox(height: mediaQuerySize.height * 0.035.h),
-                Wrap(
-                   
-                  children: List.generate(
+        body: Obx(() {
+          if (dashboardController.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-                    title.length,
-                    (index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w, vertical: mediaQuerySize.height * 0.015),
-                        child: GestureDetector(
-                          onTap: () {
-                            if (index == 0) {
-                              Get.to(() => BatteryScreen2());
-                            }
-                            if (index == 1) {
-                              Get.to(() => RoadSideServices());
-                            }
+          return Column(
+            children: [
+              SizedBox(height: mediaQuerySize.height * 0.03.h),
+              CommonMidWidget(),
+              SizedBox(height: mediaQuerySize.height * 0.03.h),
+              const Text('Dashboard', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+              SizedBox(height: mediaQuerySize.height * 0.03.h),
 
-                            if (index == 4) {
-                              Get.to(() => TruckScreen());
-                            }
-                            if (index == 5) {
-                              Get.to(() => BatterySearchScreen());
-                            }
-                          },
-                          child: Container(
-                              width: mediaQuerySize.width * 0.4,
-                              // height: mediaQuerySize.height * 0.01,
-                              decoration: BoxDecoration(boxShadow: [const BoxShadow(color: Colors.black12, blurRadius: 1, spreadRadius: 1, offset: Offset(0, 0))], color: AppColors.secondoryColor, borderRadius: BorderRadius.circular(12)),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.045, vertical: mediaQuerySize.height * 0.03),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image.asset(images[index]),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: mediaQuerySize.width * 0.2,
-                                          height: mediaQuerySize.height * 0.05,
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.start,
-                                              title[index],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )),
-                        ),
-                      );
-                    },
+              Expanded(
+                child: GridView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 2.5, // Increased width, reduced height
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
                   ),
-                )
-              ],
-            ),
-          ),
-        ),
+                  itemCount: dashboardController.dashboardItems.length,
+                  itemBuilder: (context, index) {
+                    final item = dashboardController.dashboardItems[index];
+
+                    return GestureDetector(
+                      onTap: () {
+                        if (routes.containsKey(item.route)) {
+                          Get.to(routes[item.route]!());
+                        }
+                      },
+                      child: Container(
+                        height: mediaQuerySize.height * 0.12.h, // Decreased height
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+                        decoration: BoxDecoration(
+                          color: const Color(0xffFAF7F8),
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 2, spreadRadius: 1)],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(item.image, height: 40, width: 40), // Adjusted image size
+                            const SizedBox(width: 10), // Horizontal spacing
+                            Expanded(
+                              child: Text(
+                                item.title,
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis, // Prevents overflow issues
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              // SizedBox(height: mediaQuerySize.height*0.02.h,),
+              // ElevatedButton(onPressed: (){
+              //    dashboardController .addDashboardItems();
+              // }, child: Text('Add'))
+            ],
+          );
+        }),
       ),
     );
   }
-
-  List<String> title = ['Battery', 'Roadside Service', 'Issue', 'Recieve', 'Truck Stock', 'Battery Search', 'Delivery'];
 }

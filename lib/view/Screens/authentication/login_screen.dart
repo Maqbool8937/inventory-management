@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management_app/controllers/auth_controllers.dart';
 import 'package:inventory_management_app/view/Screens/authentication/forgot_password.dart';
-import 'package:inventory_management_app/view/Screens/authentication/sign_up_screen.dart';
+import 'package:inventory_management_app/view/Screens/authentication/signup_screen.dart';
 import 'package:inventory_management_app/view/Screens/bottom_navigation_bar.dart';
 
-import '../../../controllers/getxControllers/auth_controllers.dart';
 import '../../../controllers/utils/app_extension.dart';
 import '../../../controllers/utils/app_textstyles.dart';
 
@@ -26,6 +26,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   GlobalKey<FormState> formKey = GlobalKey();
+  
 AuthControllers authControllers = Get.put(AuthControllers());
 final TextEditingController emailControler = TextEditingController();
 
@@ -123,22 +124,23 @@ final TextEditingController passwordController = TextEditingController();
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         Get.offAll(() => BottomNavigationBarScreen());
-                        // await authControllers
-                        //     .signInWithEmailAndPassword(
-                        //   email: emailControler.text.trim(),
-                        //   password: passwordController.text.trim(),
-                        // )
-                        //     .then(
-                        //   (value) {
-                        //     if (value == true) {
-                        //       //return Get.to(() => ImageScreen());
-                        //     } else {
-                        //       print('the error');
-                        //     }
-                        //   },
-                        // );
+                      
+                        await authControllers
+                            .signInWithEmailAndPassword(
+                          email: emailControler.text.trim(),
+                          password: passwordController.text.trim(),
+                        )
+                            .then(
+                          (value) {
+                            if (value == true) {
+                              //return Get.to(() => ImageScreen());
+                            } else {
+                              print('the error');
+                            }
+                          },
+                        );
 
-                        // Get.to(() => ForgotPasswordScreen());
+                       // Get.to(() => ForgotPasswordScreen());
                       }
                       print('no');
                     },
