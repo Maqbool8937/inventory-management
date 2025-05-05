@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management_app/controllers/utils/app_colors.dart';
@@ -7,191 +8,150 @@ import 'package:inventory_management_app/view/Screens/widgets/custom_button.dart
 import '../widgets/common_appbar.dart';
 import '../widgets/common_truck_icon.dart';
 
-class TruckScreen extends StatelessWidget {
+class TruckScreen extends StatefulWidget {
   TruckScreen({super.key});
+
+  @override
+  _TruckScreenState createState() => _TruckScreenState();
+}
+
+class _TruckScreenState extends State<TruckScreen> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final List<String> dropdownItems = ["200", "300", "400", "500", "600"];
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String? selectedCapacity;
+
+  @override
+  void initState() {
+    super.initState();
+    _addTruckData(); // Add dummy truck data
+  }
+
+  // Function to add sample truck data to Firestore
+  Future<void> _addTruckData() async {
+    CollectionReference trucks = firestore.collection('trucks');
+
+    List<Map<String, dynamic>> sampleData = [
+      {"truckNumber": "200", "capacity": "200", "batteries": 16},
+      {"truckNumber": "300", "capacity": "300", "batteries": 20},
+      {"truckNumber": "400", "capacity": "400", "batteries": 12},
+      {"truckNumber": "500", "capacity": "500", "batteries": 18},
+    ];
+
+    for (var truck in sampleData) {
+      await trucks.doc(truck['truckNumber']).set(truck);
+    }
+    print("✅ Truck data added to Firestore");
+  }
+
+  // Fetch trucks dynamically from Firestore
+  Stream<QuerySnapshot> getTrucks() {
+    Query query = firestore.collection('trucks');
+
+    if (selectedCapacity != null) {
+      query = query.where("capacity", isEqualTo: selectedCapacity);
+    }
+
+    return query.snapshots();
+  }
+
+  // Show filter dialog
+  void showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Filter Trucks", style: TextStyle(fontWeight: FontWeight.bold)),
+        content: DropdownButtonFormField<String>(
+          decoration: InputDecoration(border: OutlineInputBorder(), labelText: "Select Capacity"),
+          value: selectedCapacity,
+          items: ["200", "300", "400", "500", "600"].map((String value) {
+            return DropdownMenuItem(value: value, child: Text(value));
+          }).toList(),
+          onChanged: (value) {
+            setState(() => selectedCapacity = value);
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              setState(() => selectedCapacity = null);
+              Navigator.pop(context);
+            },
+            child: Text("Reset"),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
 
     return Scaffold(
-        appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
-        body: SingleChildScrollView(
-            child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: mediaQuerySize.height * 0.03.h, horizontal: mediaQuerySize.width * 0.03.w),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: mediaQuerySize.height * 0.03.h,
-                ),
-                SizedBox(
-                  height: mediaQuerySize.height * 0.05.h,
-                ),
-                CustomButton(
-                  name: 'Filter Trucks',
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        contentPadding: EdgeInsets.all(0),
-                        content: Container(
-                            height: mediaQuerySize.height * 0.35,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02, vertical: mediaQuerySize.height * 0.015),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        'Filter Trucks',
-                                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        width: mediaQuerySize.width * 0.1,
-                                      ),
-                                      IconButton(onPressed: () {}, icon: Icon(Icons.cancel)),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: mediaQuerySize.height * 0.02,
-                                  ),
-                                  CustomField(
-                                    isSuffixIcon: true,
-                                    suffixIcon: IconButton(
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      onPressed: () {
-                                        DropdownButton<String>(
-                                            // value: selectedValue,
-                                            hint: Text("Select a value"),
-                                            items: dropdownItems.map((String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                            onChanged: (String? newValue) {});
-                                      },
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: mediaQuerySize.height * 0.02,
-                                  ),
-                                  CustomButton(name: 'Filter')
-                                ],
-                              ),
-                            )),
-                      ),
+      appBar: CommonAppBar.commonAppBar(context, scaffoldKey),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              CustomButton(name: 'Filter Trucks', onTap: showFilterDialog),
+              SizedBox(height: 20.h),
+
+              // Wrap with Expanded to prevent overflow
+              Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: getTrucks(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                      return Center(child: Text("No Trucks Available"));
+                    }
+
+                    return ListView.builder(
+                      shrinkWrap: true, // Ensures it doesn't take infinite height
+                      physics: BouncingScrollPhysics(), // Smooth scrolling
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        var truck = snapshot.data!.docs[index].data() as Map<String, dynamic>;
+
+                        return Card(
+                          elevation: 5,
+                          margin: EdgeInsets.symmetric(vertical: 8.h),
+                          child: Padding(
+                            padding: EdgeInsets.all(12.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                      Text("Truck No. ${truck['truckNumber']}", style: AppTextstyles.BoldBlackText()),
+                                                                    
+                                                                      Text("Batteries: ${truck['batteries']}", style: TextStyle(fontSize: 14.sp)),
+                                        
+                                  
+                                   
+                                   
+                                  ],
+                                ),
+                                   CommonTruckIcon(text1: truck['capacity'], text2: "Capacity")
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
-                SizedBox(
-                  height: mediaQuerySize.height * 0.05.h,
-                ),
-                Container(
-                  height: mediaQuerySize.height * 0.2.h,
-                  width: mediaQuerySize.width * 0.9.w,
-                  decoration: BoxDecoration(color: AppColors.whiteColor, borderRadius: BorderRadius.circular(10), boxShadow: [BoxShadow(blurRadius: 4, spreadRadius: 1, offset: Offset(0, 2))]),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Truck No. 200',
-                        style: AppTextstyles.BoldBlackText(),
-                      ),
-                      SizedBox(
-                        height: mediaQuerySize.height * 0.03.h,
-                      ),
-                      CustomButton(width: mediaQuerySize.width * 0.5.w, name: '16 Batteries')
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: mediaQuerySize.height * 0.03.h,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                        SizedBox(
-                          width: mediaQuerySize.width * 0.01.w,
-                        ),
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: mediaQuerySize.height * 0.02.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                        SizedBox(
-                          width: mediaQuerySize.width * 0.01.w,
-                        ),
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: mediaQuerySize.height * 0.02.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                        SizedBox(
-                          width: mediaQuerySize.width * 0.01.w,
-                        ),
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: mediaQuerySize.height * 0.02.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                        SizedBox(
-                          width: mediaQuerySize.width * 0.01.w,
-                        ),
-                        CommonTruckIcon(
-                          text1: '34-C',
-                          text2: '2 Pieces',
-                        ),
-                      ],
-                    )
-                  ],
-                )
-              ],
-            ),
+              ),
+            ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }
+

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,19 +34,19 @@ class _AllMemberScreenState extends State<AllMemberScreen> {
                 SizedBox(height: mediaQuerySize.height * 0.06.h),
                 Text('All Members', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
-                AllMembersWidget(name: "John Wick", initialRole: "Employee"),
+                AllMembersWidget(name: "John Wick", initialRole: "Employee", ),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
 
-                AllMembersWidget(name: "Alice Smith", initialRole: "Manager"),
+                AllMembersWidget(name: "Alice Smith", initialRole: "Manager", ),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
 
-                AllMembersWidget(name: "Bob Johnson", initialRole: "User"),
+                AllMembersWidget(name: "Bob Johnson", initialRole: "User", ),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
 
-                AllMembersWidget(name: "Harry", initialRole: "User"),
+                AllMembersWidget(name: "Harry", initialRole: "User", ),
                 SizedBox(height: mediaQuerySize.height * 0.02.h),
 
-                AllMembersWidget(name: "Porter", initialRole: "Manager"),
+                AllMembersWidget(name: "Porter", initialRole: "Manager", ),
               ],
             ),
           ),

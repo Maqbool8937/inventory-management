@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management_app/controllers/dashboard_controller.dart';
+import 'package:inventory_management_app/view/Screens/battery_and_road_screen_4.dart';
 import 'package:inventory_management_app/view/Screens/battery_screen_2.dart';
+import 'package:inventory_management_app/view/Screens/issue_screen.dart';
+import 'package:inventory_management_app/view/Screens/payment_method/delivery_photo_screen.dart';
+import 'package:inventory_management_app/view/Screens/receving_screen.dart';
 import 'package:inventory_management_app/view/Screens/road_side_services.dart';
 import 'package:inventory_management_app/view/Screens/truck_stock_section/battery_search_screen.dart';
 import 'package:inventory_management_app/view/Screens/truck_stock_section/truck_screen.dart';
@@ -20,9 +24,12 @@ class HomeScreen extends StatelessWidget {
     'RoadSideServices': () => RoadSideServices(),
     'BatterySearchScreen': () => BatterySearchScreen(),
     'TruckScreen': () => TruckScreen(),
-    'IssuesScreen': () => TruckScreen(),
-    'BatterySearchScreen': () => BatterySearchScreen(),
-    'RoadSideServices': () => RoadSideServices(),
+    'IssueScreen': () => IssueScreen(),
+    'BatteryAndRoadScreen4': () => BatteryAndRoadScreen4(),
+    'RecevingScreen': () => ReceivingScreen(),
+    'DeliveryPhotoScreen':()=>DeliveryPhotoScreen(),
+   
+    //'RoadSideServices': () => RoadSideServices(),
    
   };
 
@@ -99,7 +106,7 @@ class HomeScreen extends StatelessWidget {
               ),
               // SizedBox(height: mediaQuerySize.height*0.02.h,),
               // ElevatedButton(onPressed: (){
-              //    dashboardController .addDashboardItems();
+              //    dashboardController.resetDashboardItems();
               // }, child: Text('Add'))
             ],
           );

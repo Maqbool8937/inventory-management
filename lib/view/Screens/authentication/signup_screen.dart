@@ -130,10 +130,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     isLoading: authControllers.isLoading.value,
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
-                        bool da = await authControllers.signUpwithEmailandPassword(
+                        bool da = await authControllers.signUpWithEmailAndPassword(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
-                          collectionName: 'users',
+                        //  collectionName: 'users',
                           fullName: fullNameController.text.trim(),
                           phoneNumber: phoneNumberController.text.trim(),
                         );

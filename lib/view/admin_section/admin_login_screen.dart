@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,87 +30,50 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
   RxBool isLoading = false.obs;
   RxBool isPasswordVisible = false.obs;
 
- Future<void> loginAdmin() async {
-  if (!formKey.currentState!.validate()) return;
+  Future<void> loginAdmin() async {
+    if (!formKey.currentState!.validate()) return;
 
-  isLoading.value = true;
-  try {
-    // Ensure fresh login
-    await _auth.signOut();
+    isLoading.value = true;
+    try {
+      // Ensure fresh login session
+      await _auth.signOut();
 
-    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
 
-    User? user = userCredential.user;
-    if (user == null) {
-      print("❌ No logged-in user found.");
-      Get.snackbar("Error", "Login failed. Try again.", snackPosition: SnackPosition.BOTTOM);
-      return;
+      User? user = userCredential.user;
+      if (user == null) {
+        Get.snackbar("Error", "Login failed. Try again.", snackPosition: SnackPosition.BOTTOM);
+        return;
+      }
+
+      String userId = user.uid;
+
+      // Fetch user role from Firestore
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+
+      if (!userDoc.exists || !userDoc.data().toString().contains('role')) {
+        Get.snackbar("Access Denied", "You are not an admin!", snackPosition: SnackPosition.BOTTOM);
+        await _auth.signOut(); // Log out if not an admin
+        return;
+      }
+
+      String role = userDoc.get('role');
+
+      if (role == 'admin') {
+        Get.offAll(() => ManagerScreen());
+      } else {
+        Get.snackbar("Access Denied", "You are not an admin!", snackPosition: SnackPosition.BOTTOM);
+        await _auth.signOut();
+      }
+    } catch (e) {
+      Get.snackbar("Login Failed", "Error: ${e.toString()}", snackPosition: SnackPosition.BOTTOM);
+    } finally {
+      isLoading.value = false;
     }
-
-    String userId = user.uid;
-    print("✅ Logged-in Admin User ID: $userId");
-
-    // Fetch user data from Firestore
-    DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
-
-    if (!userDoc.exists) {
-      // If user document does not exist, create it and assign admin role
-      print("⚠️ Admin data not found in Firestore, adding now...");
-      await _firestore.collection('users').doc(userId).set({
-        'email': user.email,
-        'role': 'admin',
-        'createdAt': FieldValue.serverTimestamp(),
-      });
-      print("✅ Admin user data added successfully!");
-    }
-
-    // Verify role
-    String role = (await _firestore.collection('users').doc(userId).get()).get('role');
-
-    if (role == 'admin') {
-      print("✅ Admin login successful! Navigating to ManagerScreen...");
-      Get.offAll(() => ManagerScreen());
-    } else {
-      print("❌ Access Denied: User is not an admin.");
-      Get.snackbar("Access Denied", "You are not an admin!", snackPosition: SnackPosition.BOTTOM);
-      await _auth.signOut(); // Log out if not an admin
-    }
-  } catch (e) {
-    print("❌ Login Error: $e");
-    Get.snackbar("Login Failed", e.toString(), snackPosition: SnackPosition.BOTTOM);
-  } finally {
-    isLoading.value = false;
   }
-}
-
-//Adding admin data in Firestore:
-Future<void> addAdminToFirestore() async {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  try {
-    User? user = _auth.currentUser; // Get currently logged-in user
-
-    if (user != null) {
-      await _firestore.collection('users').doc(user.uid).set({
-        'email': user.email,
-        'role': 'admin', // Assign admin role
-        'createdAt': FieldValue.serverTimestamp(),
-      });
-
-      print("✅ Admin user data added successfully in Firestore!");
-    } else {
-      print("❌ No logged-in user found.");
-    }
-  } catch (e) {
-    print("❌ Error adding admin to Firestore: $e");
-  }
-}
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +85,10 @@ Future<void> addAdminToFirestore() async {
             child: Form(
               key: formKey,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.05.w, vertical: mediaQuerySize.height * 0.01.h),
+                padding: EdgeInsets.symmetric(
+                  horizontal: mediaQuerySize.width * 0.05.w,
+                  vertical: mediaQuerySize.height * 0.01.h,
+                ),
                 child: Column(
                   children: [
                     SizedBox(height: mediaQuerySize.height * 0.08.h),
@@ -172,10 +139,6 @@ Future<void> addAdminToFirestore() async {
                       name: 'Login',
                       onTap: loginAdmin,
                     ),
-                    // SizedBox(height: mediaQuerySize.height * 0.03.h),
-                    // CustomButton(name: 'Add',onTap: (){
-                    //     addAdminToFirestore();
-                    // },)
                   ],
                 ),
               ),

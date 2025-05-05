@@ -1,6 +1,12 @@
+
 import 'package:flutter/material.dart';
 
-buildCommonTextField(String hint, {String? label, int? line}) {
+buildCommonTextField(
+  String hint, {
+  String? label,
+  int? line,
+  TextEditingController? controller,
+}) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 5),
     child: Column(
@@ -15,6 +21,7 @@ buildCommonTextField(String hint, {String? label, int? line}) {
             ),
           ),
         TextField(
+          controller: controller,
           maxLines: line ?? 1,
           decoration: InputDecoration(
             hintText: hint,
@@ -34,3 +41,41 @@ buildCommonTextField(String hint, {String? label, int? line}) {
     ),
   );
 }
+
+
+// import 'package:flutter/material.dart';
+
+// buildCommonTextField(String hint, {String? label, int? line, TextEditingController? controller, required Function(dynamic value) onChanged}) {
+//   return Container(
+//     margin: EdgeInsets.symmetric(vertical: 5),
+//     child: Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         if (label != null)
+//           Container(
+//             margin: EdgeInsets.symmetric(vertical: 5),
+//             child: Text(
+//               label,
+//               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+//             ),
+//           ),
+//         TextField(
+//           maxLines: line ?? 1,
+//           decoration: InputDecoration(
+//             hintText: hint,
+//             filled: true,
+//             fillColor: Colors.grey[200],
+//             border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(12),
+//               borderSide: BorderSide.none,
+//             ),
+//             contentPadding: EdgeInsets.symmetric(
+//               vertical: 12,
+//               horizontal: 16,
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }

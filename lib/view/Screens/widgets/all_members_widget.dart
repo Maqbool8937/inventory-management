@@ -1,3 +1,6 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -114,3 +117,68 @@ class AllMembersWidget extends StatelessWidget {
     );
   }
 }
+
+// import 'package:flutter/material.dart';
+
+// class AllMembersWidget extends StatefulWidget {
+//   final String userId;
+//   final String name;
+//   final String initialRole;
+//   final ValueChanged<String> onRoleChanged;
+
+//   AllMembersWidget({
+//     required this.userId,
+//     required this.name,
+//     required this.initialRole,
+//     required this.onRoleChanged,
+//   });
+
+//   @override
+//   _AllMembersWidgetState createState() => _AllMembersWidgetState();
+// }
+
+// class _AllMembersWidgetState extends State<AllMembersWidget> {
+//   late String _selectedRole;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _selectedRole = widget.initialRole;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       child: ListTile(
+//         title: Text(widget.name),
+//         subtitle: Row(
+//           children: [
+//             Text("Role: $_selectedRole"),
+//             Spacer(),
+//             DropdownButton<String>(
+//               value: _selectedRole.isNotEmpty ? _selectedRole : null,  // Make sure the value is not null
+//               items: ['Admin', 'Member', 'Guest']
+//                   .map((role) => DropdownMenuItem<String>(
+//                         value: role,
+//                         child: Text(role),
+//                       ))
+//                   .toList(),
+//               onChanged: (newRole) {
+//                 if (newRole != null) {
+//                   setState(() {
+//                     _selectedRole = newRole;
+//                   });
+//                   widget.onRoleChanged(newRole);
+//                 }
+//               },
+//               // Add dropdown behavior if necessary
+//               hint: Text('Select Role'),  // Add a hint if no role is selected
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+

@@ -1,33 +1,36 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-class BatteryModel {
-  String id;
+class BatteryData {
+  String? id;
+  String callId;
   String batterySize;
-  String scanBattery;
-  DateTime createdAt;
+  double amount;
+  DateTime timestamp;
 
-  BatteryModel({
-    required this.id,
+  BatteryData({
+    this.id,
+    required this.callId,
     required this.batterySize,
-    required this.scanBattery,
-    required this.createdAt,
+    required this.amount,
+    required this.timestamp,
   });
 
-  factory BatteryModel.fromMap(Map<String, dynamic> map) {
-    return BatteryModel(
-      id: map['id'] ?? '',
-      batterySize: map['batterySize'] ?? '',
-      scanBattery: map['scanBattery'] ?? '',
-      createdAt: (map['createdAt'] as Timestamp).toDate(),
-    );
-  }
-
+  // Convert model to Firebase-friendly format
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'callId': callId,
       'batterySize': batterySize,
-      'scanBattery': scanBattery,
-      'createdAt': createdAt,
+      'amount': amount,
+      'timestamp': timestamp.toIso8601String(),
     };
+  }
+
+  // Convert Firebase document to BatteryData object
+  factory BatteryData.fromMap(String id, Map<String, dynamic> map) {
+    return BatteryData(
+      id: id,
+      callId: map['callId'] ?? '',
+      batterySize: map['batterySize'] ?? '',
+      amount: (map['amount'] ?? 0).toDouble(),
+      timestamp: DateTime.parse(map['timestamp']),
+    );
   }
 }

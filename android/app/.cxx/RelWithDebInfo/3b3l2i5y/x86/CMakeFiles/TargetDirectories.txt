@@ -1,0 +1,2 @@
+C:/Users/user/OneDrive/Documents/inventory_management_app/android/app/.cxx/RelWithDebInfo/3b3l2i5y/x86/CMakeFiles/edit_cache.dir
+C:/Users/user/OneDrive/Documents/inventory_management_app/android/app/.cxx/RelWithDebInfo/3b3l2i5y/x86/CMakeFiles/rebuild_cache.dir

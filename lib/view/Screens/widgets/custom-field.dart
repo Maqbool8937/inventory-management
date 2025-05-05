@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,6 +14,8 @@ class CustomField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? text;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final Function(String)? onChanged; // ✅ Made optional
 
   CustomField({
     super.key,
@@ -30,35 +29,42 @@ class CustomField extends StatelessWidget {
     this.color,
     this.validator,
     this.controller,
+    this.keyboardType,
+    this.onChanged, // ✅ Now optional
   });
 
   @override
   Widget build(BuildContext context) {
     Size mediaQuerySize = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal:mediaQuerySize.width*0.02.w),
+      padding: EdgeInsets.symmetric(horizontal: mediaQuerySize.width * 0.02.w),
       child: TextFormField(
         controller: controller,
         obscureText: isPasswordField ? isObscured : false,
         validator: validator,
+        keyboardType: keyboardType ?? TextInputType.text,
+        onChanged: onChanged, // ✅ Use it directly (will be null-safe)
         decoration: InputDecoration(
           fillColor: color ?? Colors.black.withOpacity(0.07),
           filled: true,
           prefixIcon: isPrefixIcon ? prefixIcon : null,
           suffixIcon: isSuffixIcon ? suffixIcon : const SizedBox(),
-          contentPadding:  EdgeInsets.symmetric(horizontal: mediaQuerySize.width*0.04.w, vertical: mediaQuerySize.height*0.025.h),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: mediaQuerySize.width * 0.04.w,
+            vertical: mediaQuerySize.height * 0.025.h,
+          ),
           hintText: text,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(mediaQuerySize.width*0.03.w), // Rounded corners
-            borderSide: BorderSide.none, // Removes the border line
+            borderRadius: BorderRadius.circular(mediaQuerySize.width * 0.03.w),
+            borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(mediaQuerySize.width*0.03.w), // Rounded corners
+            borderRadius: BorderRadius.circular(mediaQuerySize.width * 0.03.w),
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(mediaQuerySize.width*0.03.w), // Rounded corners
-            borderSide: const BorderSide(color: AppColors.buttonColor, width: 2), // Customize focused border
+            borderRadius: BorderRadius.circular(mediaQuerySize.width * 0.03.w),
+            borderSide: const BorderSide(color: AppColors.buttonColor, width: 2),
           ),
           hintStyle: const TextStyle(color: Colors.grey),
         ),

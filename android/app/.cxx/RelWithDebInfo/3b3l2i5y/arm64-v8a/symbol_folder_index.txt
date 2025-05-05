@@ -1,0 +1,1 @@
+C:\Users\user\OneDrive\Documents\inventory_management_app\build\app\intermediates\cxx\RelWithDebInfo\3b3l2i5y\obj\arm64-v8a

@@ -1,3 +1,4 @@
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,7 +9,7 @@ class AuthControllers extends GetxController {
   FirebaseAuth firebaseInstance = FirebaseAuth.instance;
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  
+
   var isPasswordVisible = false.obs;
   var isChecked = false.obs;
   RxBool isLoading = false.obs;
@@ -21,35 +22,42 @@ class AuthControllers extends GetxController {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 
-  Future<bool> signUpwithEmailandPassword({
+  /// ✅ **Sign-Up with Email & Password**
+  Future<bool> signUpWithEmailAndPassword({
     required String email,
     required String password,
-    required String collectionName,
     required String fullName,
     required String phoneNumber,
   }) async {
     try {
       isLoading.value = true;
-      await firebaseInstance.createUserWithEmailAndPassword(email: email, password: password).then(
-        (value) async {
-          await fireStore.collection(collectionName).doc().set({
-            'fullName': fullName,
-            'email': email,
-            'password': password,
-            'phoneNumber': phoneNumber,
-            'userCreated': DateTime.now(),
-          });
-        },
+
+      UserCredential userCredential = await firebaseInstance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
       );
+
+      String uid = userCredential.user!.uid; // Get UID of authenticated user
+
+      // ✅ Save user details securely in Firestore
+      await fireStore.collection("users").doc(uid).set({
+        'uid': uid,
+        'fullName': fullName,
+        'email': email,
+        'phoneNumber': phoneNumber,
+        'userCreated': DateTime.now(),
+      });
+
       isLoading.value = false;
       return true;
     } catch (e) {
-      print(e);
       isLoading.value = false;
+      Get.snackbar("Sign-Up Error", e.toString());
       return false;
     }
   }
 
+  /// ✅ **Sign-In with Email & Password**
   Future<bool> signInWithEmailAndPassword({
     required String email,
     required String password,
@@ -60,33 +68,26 @@ class AuthControllers extends GetxController {
       isLoading.value = false;
       return true;
     } catch (e) {
-      print(e);
       isLoading.value = false;
+      Get.snackbar("Login Failed", e.toString());
       return false;
     }
   }
 
-  // Send a password reset email
-  Future<void> sendPasswordResetEmail(String email, BuildContext context) async {
+  /// ✅ **Password Reset**
+  Future<void> sendPasswordResetEmail(String email) async {
     try {
       isLoading.value = true;
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      await firebaseInstance.sendPasswordResetEmail(email: email);
       isLoading.value = false;
-    } on FirebaseAuthException catch (e) {
+      Get.snackbar("Success", "Password reset link sent to your email.");
+    } catch (e) {
       isLoading.value = false;
-      if (e.code == 'user-not-found') {
-        print("No user found for that email.");
-      } else {
-        if (Get.isSnackbarOpen) {
-          Get.back();
-        }
-        Get.showSnackbar(GetBar(
-          message: e.message.toString(),
-        ));
-      }
+      Get.snackbar("Reset Failed", e.toString());
     }
   }
 
+  /// ✅ **Google Sign-In**
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -100,25 +101,38 @@ class AuthControllers extends GetxController {
       );
 
       UserCredential userCredential = await firebaseInstance.signInWithCredential(credential);
-      return userCredential.user;
+      User? user = userCredential.user;
+
+      if (user != null) {
+        // ✅ Check if user exists in Firestore
+        DocumentSnapshot userDoc = await fireStore.collection("users").doc(user.uid).get();
+        if (!userDoc.exists) {
+          // ✅ If new user, store details
+          await fireStore.collection("users").doc(user.uid).set({
+            'uid': user.uid,
+            'fullName': user.displayName ?? "Google User",
+            'email': user.email,
+            'phoneNumber': user.phoneNumber ?? "",
+            'userCreated': DateTime.now(),
+          });
+        }
+      }
+
+      return user;
     } catch (e) {
-      print('Error: $e');
+      Get.snackbar("Google Sign-In Failed", e.toString());
       return null;
     }
   }
 
-  // Sign out function for both Google and Email/Password users
+  /// ✅ **Sign-Out**
   Future<void> signOut() async {
     try {
-      if (firebaseInstance.currentUser != null) {
-        await firebaseInstance.signOut(); // Sign out Firebase authentication
-      }
-      if (await _googleSignIn.isSignedIn()) {
-        await _googleSignIn.signOut(); // Sign out Google user
-      }
-      print("User signed out successfully.");
+      await firebaseInstance.signOut(); // Sign out Firebase authentication
+      await _googleSignIn.signOut(); // Sign out Google user
+      Get.snackbar("Success", "Signed out successfully.");
     } catch (e) {
-      print("Error signing out: $e");
+      Get.snackbar("Sign-Out Failed", e.toString());
     }
   }
 }
